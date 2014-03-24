@@ -1,0 +1,152 @@
+// Bar styles
+$sidebar-bg: #12131a;
+$sidebar-width: 220px;
+
+// Vertical height
+$sidenav-mobile-height: 50px;
+
+// Main menu styles
+$sidenav-bg: $sidebar-bg;
+$sidenav-color: #eeeeee;
+$sidenav-hover-bg: #1aae88;
+$sidenav-hover-color: #f6f6f6;
+
+// Dropdown elements styles
+$sidenav-dropdown-bg: #07080b;
+$sidenav-dropdown-color: #8287a9;
+$sidenav-dropdown-hover-bg: transparent;
+$sidenav-dropdown-hover-color: #ffffff;
+
+// Divider Styles
+$sidenav-diver-border-top: 1px solid scale-color($sidebar-bg, $lightness: -50%);
+$sidenav-diver-border-bottom: 1px solid scale-color($sidebar-bg, $lightness: -50%);
+
+// Media queries and braekpoints
+$sidebar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
+$sidebar-media-query: $medium-up !default;
+
+
+// Used to provide media query values for javascript components
+meta.custom-mq-sidebar {
+    font-family: "/" + unquote($sidebar-media-query) + "/";
+    width: $sidebar-breakpoint;
+}
+
+// Style for small screens
+.sidebar {
+    width: 100%;
+    background: $sidebar-bg;
+    z-index: 1000;
+    &.open {
+        .sidebar-nav {
+           display: block; 
+        }
+    }
+    .sidebar-nav {
+        display: none;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-bottom: $sidenav-diver-border-bottom;
+        li {
+            margin: 0;
+            padding: 0;
+            border-top: $sidenav-diver-border-top;
+            a {
+                @include transition-property(background-color);
+                @include transition-duration(0.2s);
+                @include transition-timing-function(ease-in-out);
+                padding: 12px 5px 12px 15px;
+                display: block;
+                color: $sidenav-color;
+                margin-right: 1px;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 14px;
+                &:hover, &.active {
+                    color: $sidenav-hover-color;
+                    background: $sidenav-hover-bg;
+                }
+                & > .fa {
+                    width: 20px;
+                    line-height: inherit;
+                }
+            }
+            &.dropdown.active > a {
+                background: $sidenav-hover-bg;
+                &:hover {
+                    color: $sidenav-hover-color;
+                    background: $sidenav-hover-bg;
+                }
+            }
+            ul.dropdown-menu {
+                margin: 0;
+                background: $sidenav-dropdown-bg;
+                display: none;
+                li {
+                    border: none;
+                    a {
+                        padding: 5px 5px 5px 25px;
+                        display: block;
+                        font-size: 14px;
+                        color: $sidenav-dropdown-color;
+                        &:hover {
+                            color: $sidenav-dropdown-hover-color;
+                            background: $sidenav-dropdown-hover-bg;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .toggle-topbar {
+        position: relative;
+        a {
+            height: $sidenav-mobile-height;
+            line-height: $sidenav-mobile-height;
+            padding: 0 20px;
+            text-align: center;
+            display: block;
+            background: #07080b;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: rem-calc(16);
+            &:after {
+                content: "\f0c9"; 
+                font-family: FontAwesome;
+                font-style: normal;
+                font-weight: normal;
+                text-decoration: inherit;
+                color: #ffffff;
+                font-size: 18px;
+                padding-right: 0.5em;
+                position: absolute;
+                top: 0;
+                right: rem-calc(20);
+            }
+        }
+    }
+}
+
+// Style for desktop screens
+@media #{$sidebar-media-query} {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        height: 100%;
+        width: $sidebar-width;
+        background: $sidebar-bg;
+        &.right {
+            left: auto;
+            right: 0;
+        }
+        .sidebar-nav {
+            display: block !important;
+        }
+        .toggle-topbar {
+            display: none;
+        }
+    }
+}
