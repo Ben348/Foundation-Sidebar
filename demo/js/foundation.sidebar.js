@@ -103,7 +103,7 @@
                 // Hide the menu
                 open.find('.dropdown-menu').slideUp(self.settings.speed, function(){
                     // Call the drodownToggle callback - opened: false, li element, breakpoint
-                    self.settings.dropdownToggled(false, parent, self.breakpoint());
+                    self.settings.dropdownToggled(false, open, self.breakpoint());
                 });
 
                 // Add the active class
