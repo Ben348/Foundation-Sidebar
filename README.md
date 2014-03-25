@@ -146,3 +146,77 @@ $('.sidebar').sidebar({
     }
 });
 ````
+## slimScroll demo
+Example of how to impliment slimScroll with this side bar. First you need to download the files from here
+- slimScroll (scrollbar) [https://github.com/rochal/jQuery-slimScroll](https://github.com/rochal/jQuery-slimScroll)
+
+### Step 1 - HTML Markup
+First we need to add a div around the content that you want scrollable. In this instance I've added: `<div class="sb-scrollable">...</div>`
+
+````html
+<div class="sidebar">
+   <!-- Toggle menu button for small devices -->
+   <div class="toggle-topbar">
+      <a href="#">menu</a>
+   </div>
+
+   <!-- Container div for scrollable content -->
+   <div class="sb-scrollable">
+      <!-- Navigation -->
+      <nav>
+         <ul class="sidebar-nav">
+            <li><a href="#">Menu Item 1</a></li>
+            <li><a href="#">Menu Item 2</a></li>
+            <li class="dropdown">
+               <a href="#">Menu Item 3</a>
+               <ul class="dropdown-menu">
+                  <li><a href="#">Drop menu item 1</a></li>
+                  <li><a href="#">Drop menu item 2</a></li>
+                  <li><a href="#">Drop menu item 3</a></li>
+               </ul>
+            </li>
+         </ul>
+      </nav>
+   </div>
+</div>
+````
+
+### Step 2 - CSS
+Add some CSS for the div.
+````css
+.sb-scrollable {
+    height: auto;
+}
+````
+
+### Step 3 - JavaScript
+No we add the JavaScript utilising the callbacks to determine when the scroll bar should be made / destroyed.
+````javascript
+$(document).ready(function(){
+
+    $('.sidebar').sidebar({
+        breakpointPassed: function(belowBreakpoint){
+            if(belowBreakpoint){
+                // Destroy the bar
+                $('.sidebar .sb-scrollable').slimScroll({destroy: true}).css('height', 'auto');
+            }else{
+                // Make the bar
+                slimscrollSidebar();
+            }
+        }
+    });
+
+    // Slimscroll the side bar if above breakpoint
+    if(!$('.sidebar').data('plugin_sidebar').breakpoint()){
+        // Add slimScroll to the sidebar
+        slimscrollSidebar();
+    }
+});
+
+function slimscrollSidebar(){
+    $('.sidebar .sb-scrollable').slimScroll({
+        height: 'auto',
+        railVisible: true
+    });
+}
+````
