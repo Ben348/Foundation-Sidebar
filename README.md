@@ -230,7 +230,7 @@ $(document).ready(function(){
     });
 
     // Slimscroll the side bar if above breakpoint
-    if(!$('.sidebar').data('plugin_sidebar').breakpoint()){
+    if(!$('.sidebar').sidebar('breakpoint')){
         // Add slimScroll to the sidebar
         slimscrollSidebar();
     }
