@@ -7,6 +7,8 @@ This project aims to build a fully customisable and lightweight sidebar componen
 
 **DEMO** http://ben-thomson.co.uk/foundation-sidebar/
 
+**slimScroll DEMO** http://ben-thomson.co.uk/foundation-sidebar/slim/
+
 ##Requirements
 The project requires the following libraries to work.
 - jQuery [http://jquery.com/](http://jquery.com/)
