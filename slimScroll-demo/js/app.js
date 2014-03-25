@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     $('.sidebar').sidebar({
         speed: 'normal',
-        dropdownToggled: function(opened, element, belowBreakpoint)
+        dropdownToggled: function(opened, element)
         {
             // Change arrow icons based on dropdown menu status
             if(opened){
@@ -18,18 +18,21 @@ $(document).ready(function(){
             }
         },
         breakpointPassed: function(belowBreakpoint){
-            if(belowBreakpoint){
+            if(belowBreakpoint) {
                 // Destroy the bar
+                console.log('Destroying bar...');
                 $('.sidebar .sb-scrollable').slimScroll({destroy: true}).css('height', 'auto');
-            }else{
+            }
+            else {
+                console.log('Making bar...');
                 // Make the bar
                 slimscrollSidebar();
             }
         }
     });
-
+    
     // Slimscroll the side bar if above breakpoint
-    if(!$('.sidebar').data('plugin_sidebar').breakpoint()){
+    if(!$('.sidebar').sidebar('breakpoint')){
         // Add slimScroll to the sidebar
         slimscrollSidebar();
     }

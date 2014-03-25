@@ -9,6 +9,21 @@ This project aims to build a fully customisable and lightweight sidebar componen
 
 **slimScroll DEMO** http://ben-thomson.co.uk/foundation-sidebar/slim/
 
+## Content
+1. Requirements
+2. Installation
+  1. Without Compass
+3. HTML Markup
+4. Callbacks & Functions
+  * dropdownToggle(...)
+  * menuToggled(...)
+  * breakpointPassed(...)
+  * breakpoint()
+5. slimScroll demo
+  1. HTML Markup
+  2. CSS
+  3. JavaScript
+
 ##Requirements
 The project requires the following libraries to work.
 - jQuery [http://jquery.com/](http://jquery.com/)
@@ -77,7 +92,7 @@ Once that is done call the function like below and the plugin will automatically
 // With options
 $('.sidebar').sidebar({
     speed: 'normal' // Number or string - Animation speed for open/closing menu.
-    dropdownToggled: function(opened, element, belowBreakpoint){}, // Dropdown toggle callback
+    dropdownToggled: function(opened, element){}, // Dropdown toggle callback
     menuToggled: function(opened){}, // Small menu toggle callback
     breakpointPassed: function(belowBreakpoint){} // Breakpoint passed callback
 });
@@ -96,11 +111,10 @@ This function is called after a menu item with dropdown items is expanded/collap
 | --- | --- | --- |
 | **opened** | boolean | State of the dropdown menu. |
 | **element** | object | `<li class="dropdown">` element in the main menu list. This is the element that holds the dropdown menu. |
-| **belowBreakpoint** | boolean | **TRUE** if below the breakpoint or **FALSE** if above. |
 
 ````javascript
 $('.sidebar').sidebar({
-    dropdownToggled: function(opened, element, belowBreakpoint){
+    dropdownToggled: function(opened, element){
        if(opened){
           ...
        }
@@ -148,6 +162,13 @@ $('.sidebar').sidebar({
     }
 });
 ````
+### breakpoint()
+Access the breakpoint status of the menu at any time by calling the function:
+````javascript
+$('.sidebar').sidebar('breakpoint')
+````
+The function returns **TRUE** if below the breakpoint or **FALSE** if above
+
 ## slimScroll demo
 Example of how to impliment slimScroll with this side bar. First you need to download the files from here
 - slimScroll (scrollbar) [https://github.com/rochal/jQuery-slimScroll](https://github.com/rochal/jQuery-slimScroll)
