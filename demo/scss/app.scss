@@ -1,2 +1,12 @@
 @import "base";
 
+.row.full-width {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 20px 0 20px;
+}
+@media #{$sidebar-media-query} {
+    .row.full-width {
+        padding: 20px 20px 0 ($sidebar-width + 20px);
+    }
+}
