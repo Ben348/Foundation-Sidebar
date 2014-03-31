@@ -32,8 +32,8 @@
         // Make the element a jQuery object
         this.element = $(element);
 
-        // Set the current breakpoint value
-        this._breakpoint = this.breakpoint();
+        // Create the breakpoint variable
+        this._breakpoint = null;
     };
 
     /**
@@ -168,6 +168,9 @@
 
             // Register the sidebar media query (defined in _sidebar.scss settings)
             Foundation.utils.register_media('sidebar', 'custom-mq-sidebar');
+
+            // Set the breakpoint
+            self._breakpoint = self.breakpoint();
 
             // Link the dropdown menu items with toggle open/close functions
             self.element.find('.dropdown > a').click(function(event)

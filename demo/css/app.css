@@ -8086,7 +8086,7 @@ meta.custom-mq-sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    overflow: auto;
+    overflow: hidden;
     height: 100%;
     width: 220px;
     background: #12131a;

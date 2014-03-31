@@ -134,7 +134,7 @@ meta.custom-mq-sidebar {
         position: fixed;
         top: 0;
         left: 0;
-        overflow: auto;
+        overflow: hidden;
         height: 100%;
         width: $sidebar-width;
         background: $sidebar-bg;
